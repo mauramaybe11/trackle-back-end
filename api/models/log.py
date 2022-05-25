@@ -10,6 +10,8 @@ class Log(models.Model):
   word = models.CharField(max_length=100)
   guesses = models.IntegerField()
   date_guessed = models.DateField()
+  created_at = models.DateTimeField(auto_now_add=True)
+  updated_at = models.DateTimeField(auto_now=True)
   owner = models.ForeignKey(
       get_user_model(),
       on_delete=models.CASCADE
@@ -26,6 +28,5 @@ class Log(models.Model):
         'game': self.game,
         'word': self.word,
         'guesses': self.guesses,
-        'date_guessed': self.date_guessed,
-        'owner': self.owner
+        'date_guessed': self.date_guessed
     }

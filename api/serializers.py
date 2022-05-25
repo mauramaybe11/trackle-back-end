@@ -13,7 +13,7 @@ class MangoSerializer(serializers.ModelSerializer):
 class LogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Log
-        fields = ('id', 'game', 'word', 'guesses', 'date_guessed', 'owner')
+        fields = ('id', 'game', 'word', 'guesses', 'date_guessed', 'owner', 'created_at', 'updated_at')
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
         # get_user_model will get the user model (this is required)
         # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#referencing-the-user-model
         model = get_user_model()
+        # !!! tried to add name bellow, still couldn't get username to work
         fields = ('id', 'email', 'password')
         extra_kwargs = { 'password': { 'write_only': True, 'min_length': 5 } }
 
@@ -36,6 +37,8 @@ class UserRegisterSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=300, required=True)
     password = serializers.CharField(required=True)
     password_confirmation = serializers.CharField(required=True, write_only=True)
+    #!!!!coment out below if name doesn't work
+    # name = serializers.CharField(max_length=300, required=True)
 
     def validate(self, data):
         # Ensure password & password_confirmation exist

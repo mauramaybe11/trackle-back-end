@@ -57,6 +57,7 @@ class SignIn(generics.CreateAPIView):
                 # Log them in!
                 login(request, user)
                 # Finally, return a response with the user's token
+                # Tried adding name below and coudl not get it to work
                 return Response({
                     'user': {
                         'id': user.id,

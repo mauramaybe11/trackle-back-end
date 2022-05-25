@@ -59,6 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # As with any Django models, we need to define the fields
     # for the model with the type and options:
     email = models.EmailField(max_length=255, unique=True)
+    #!!!! if this doesn't work uncomment out below
     # name = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -73,8 +74,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     # This doesn't mean the field is required (that's defined above in the field options)
     # This refers to the fields that are prompted for when creating a superuser.
     # https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#django.contrib.auth.models.CustomUser.REQUIRED_FIELDS
+    #!!!! if this doesn't work uncomment out below
     # REQUIRED_FIELDS = ['name']
-
     # Standard Python: We'll create a string representation so when
     # the class is output we'll get something meaningful.
     def __str__(self):
